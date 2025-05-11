@@ -1,24 +1,24 @@
+import Link from 'next/link'
+
 export default function Home() {
   return (
-    <div>
-      <div className="relative">
-        <img
-          src="https://images.unsplash.com/photo-1588776814546-ec8c7bcb8c99"
-          alt="Audiology Center"
-          className="w-full h-64 object-cover rounded-md shadow"
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-          <h2 className="text-white text-4xl font-bold">Hear Better, Live Better</h2>
-        </div>
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+      {/* Banner Section */}
+      <section className="bg-blue-500 text-white w-full p-10 text-center">
+        <h1 className="text-4xl font-bold">Welcome to Audiology Clinic</h1>
+        <p className="mt-2 text-lg">Your hearing health is our priority</p>
+      </section>
 
-      <section className="mt-8">
-        <h3 className="text-2xl font-semibold mb-2">Welcome to the Audiology Center</h3>
-        <p>
-          We specialize in hearing health care including tests, aids, and treatment.
-          Our certified professionals are here to support your hearing journey.
-        </p>
+      {/* Call to Action Section */}
+      <section className="flex flex-col items-center justify-center mt-10">
+        <h2 className="text-2xl font-semibold">Book Your Appointment Now</h2>
+        <p className="mt-2">Take the first step to better hearing.</p>
+        <Link href="/appointment">
+          <button className="mt-4 py-2 px-6 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+            Book Appointment
+          </button>
+        </Link>
       </section>
     </div>
-  );
+  )
 }
