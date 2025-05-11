@@ -1,4 +1,5 @@
 import './globals.css';
+ import Link from 'next/link';
 
 export const metadata = {
   title: 'Heal Hearing',
@@ -13,7 +14,7 @@ export default function RootLayout({ children }) {
           <div className="flex justify-between items-center max-w-6xl mx-auto">
             <h1 className="text-3xl font-bold">Heal Hearing and Speech Therapy!</h1>
             <nav className="space-x-4">
-              <a href="/" className="hover:underline">Home</a>
+            <Link href="/"className="hover:underline">Home</Link>
               <a href="/services" className="hover:underline">Services</a>
               <a href="/contact" className="hover:underline">Contact</a>
             </nav>
