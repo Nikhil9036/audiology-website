@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 export default function AppointmentPage() {
-  const [form, setForm] = useState({ name: '', date: '', time: '', reason: '' });
+  const [form, setForm] = useState({ name: '', email:'', number:'', date: '', time: '', reason: '' });
   const [message, setMessage] = useState('');
 
   const handleChange = (e) => {
@@ -20,7 +20,7 @@ export default function AppointmentPage() {
 
     if (res.ok) {
       setMessage('Appointment booked successfully!');
-      setForm({ name: '', date: '', time: '', reason: '' });
+      setForm({ name: '', email: '', number:'', date: '', time: '', reason: '' });
     } else {
       setMessage('Something went wrong. Try again.');
     }
@@ -38,6 +38,22 @@ export default function AppointmentPage() {
           className="w-full p-2 border rounded"
           required
         />
+        <input
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="Your Email"
+          className="w-full p-2 border rounded"
+          required
+        />
+        <input
+          name="number"
+          value={form.number}
+          onChange={handleChange}
+          placeholder="Your Number"
+          className="w-full p-2 border rounded"
+        />
+
         <input
           type="date"
           name="date"

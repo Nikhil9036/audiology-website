@@ -1,10 +1,11 @@
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// WARNING: This is for testing only. Do NOT hardcode in production.
+const resend = new Resend('re_5nHcraNb_J5vwa9rykTK9hCi4yc61gbop');
 
 export async function POST(req) {
   try {
-    const { name, email, date, time } = await req.json();
+    const { name, email, number, date, time } = await req.json();
 
     // Send confirmation email
     const response = await resend.emails.send({
