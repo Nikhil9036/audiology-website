@@ -1,59 +1,84 @@
-export default function Appointment() {
+// app/appointment/page.js
+'use client';
+
+import { useState } from 'react';
+
+export default function AppointmentPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    number: '',
+    date: '',
+    time: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ 
+      ...formData, 
+      [e.target.name]: e.target.value 
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Appointment booked for ${formData.name} on ${formData.date} at ${formData.time}`);
+    // Later you can connect this to a database or backend.
+  };
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 p-4">
-      <h1 className="text-4xl font-bold text-center text-blue-600 mb-6">Book an Appointment</h1>
-
-      <form className="w-full max-w-md bg-white p-8 rounded-lg shadow-lg space-y-4">
-        <div>
-          <label htmlFor="name" className="block text-lg font-semibold text-gray-700">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your Full Name"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="Email-ID" className="block text-lg font-semibold text-gray-700">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="Your Email"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="Contact Number" className="block text-lg font-semibold text-gray-700">Contact Number</label>
-          <input
-            type="number"
-            id="number"
-            name="number"
-            placeholder="Your Contact Nubmer"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="appointmentDate" className="block text-lg font-semibold text-gray-700">Date</label>
-          <input
-            type="date"
-            id="appointmentDate"
-            name="appointmentDate"
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
+    <div className="min-h-screen bg-gray-50 p-10">
+      <h1 className="text-3xl font-bold mb-6 text-center">Book an Appointment</h1>
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded shadow-md space-y-4">
+        <input
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          className="w-full p-2 border rounded"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email Address"
+          className="w-full p-2 border rounded"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="number"
+          name="number"
+          placeholder="Contact Number"
+          className="w-full p-2 border rounded"
+          value={formData.number}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="date"
+          name="date"
+          className="w-full p-2 border rounded"
+          value={formData.date}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="time"
+          name="time"
+          className="w-full p-2 border rounded"
+          value={formData.time}
+          onChange={handleChange}
+          required
+        />
         <button
           type="submit"
-          className="mt-6 w-full py-2 px-6 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
         >
           Book Appointment
         </button>
       </form>
     </div>
-  )
+  );
 }

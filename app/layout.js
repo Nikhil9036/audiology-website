@@ -17,6 +17,7 @@ export default function RootLayout({ children }) {
             <Link href="/"className="hover:underline">Home</Link>
               <a href="/services" className="hover:underline">Services</a>
               <a href="/contact" className="hover:underline">Contact</a>
+              <a href="/appointment" className="hover:underline">Get Appointment</a>
             </nav>
           </div>
         </header>
