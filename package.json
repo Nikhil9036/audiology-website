@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "mongose": "^0.0.2-security",
     "next": "15.3.2",
+    "nodemailer": "^7.0.3",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "resend": "^4.5.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

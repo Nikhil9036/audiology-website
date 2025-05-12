@@ -27,6 +27,17 @@ export default function Contact() {
         </div>
 
         <div>
+          <label htmlFor="number" className="block text-lg font-semibold text-gray-700">Number</label>
+          <input
+            type="number"
+            id="number"
+            name="number"
+            placeholder="Your Number"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </div>
+
+        <div>
           <label htmlFor="message" className="block text-lg font-semibold text-gray-700">Message</label>
           <textarea
             id="message"
