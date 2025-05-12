@@ -7,7 +7,7 @@ export default function AboutPage() {
         Our experienced audiologists use state-of-the-art equipment to assess, diagnose, and treat hearing-related issues.
       </p>
       <p className="text-lg text-gray-700 leading-relaxed">
-        Whether you're experiencing hearing loss, tinnitus, or just need a check-up, our team is here to help. 
+        Whether you are experiencing hearing loss, tinnitus, or just need a check-up, our team is here to help. 
         We believe in personalized care and work closely with every patient to create a treatment plan that fits their unique needs.
       </p>
     </div>
