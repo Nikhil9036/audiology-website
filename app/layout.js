@@ -10,6 +10,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <title>{metadata.title}</title>
+        <meta name="description" content={metadata.description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body
         className="flex flex-col min-h-screen"
         style={{
@@ -21,7 +26,6 @@ export default function RootLayout({ children }) {
         <header className="bg-blue-600 bg-opacity-90 text-white p-4">
           <div className="flex justify-between items-center max-w-6xl mx-auto">
             <div className="flex items-center space-x-2">
-              {/* Ensure the image path is correct */}
               <Image src="/logo.jpeg" alt="Heal Hearing Logo" width={40} height={40} />
               <span className="text-2xl font-bold">Heal Hearing</span>
             </div>

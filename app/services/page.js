@@ -1,38 +1,52 @@
+'use client'; // only needed in Next.js App Router
+
+import Link from 'next/link';  // Import Link from Next.js for navigation
+
 export default function ServicesPage() {
+  const services = [
+    {
+      title: "Hearing Tests",
+      slug: "hearing-tests",  // Create a slug for each service
+      short: "Comprehensive hearing assessments for all age groups.",
+    },
+    {
+      title: "Hearing Aids",
+      slug: "hearing-aids",
+      short: "Modern digital hearing aids tailored to your needs.",
+    },
+    {
+      title: "Ear Wax Removal",
+      slug: "ear-wax-removal",
+      short: "Safe and gentle wax removal by professionals.",
+    },
+    {
+      title: "Speech Therapy",
+      slug: "speech-therapy",
+      short: "Tailored therapy for speech and communication disorders.",
+    },
+    {
+      title: "Tinnitus Management",
+      slug: "tinnitus-management",
+      short: "Relief strategies for ringing or buzzing in the ears.",
+    },
+    {
+      title: "Balance Assessment",
+      slug: "balance-assessment",
+      short: "Diagnosing causes of dizziness and imbalance.",
+    },
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-12">
       <h1 className="text-4xl font-bold text-center text-blue-700 mb-10">Our Services</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {[
-          {
-            title: "Hearing Tests",
-            description: "Comprehensive hearing evaluations for all age groups."
-          },
-          {
-            title: "Hearing Aids",
-            description: "Latest technology devices, personalized for your needs."
-          },
-          {
-            title: "Ear Wax Removal",
-            description: "Safe and effective methods to keep your ears clean."
-          },
-          {
-            title: "Speech Therapy",
-            description: "Expert care for speech and communication disorders."
-          },
-          {
-            title: "Tinnitus Management",
-            description: "Strategies to help reduce and cope with ringing ears."
-          },
-          {
-            title: "Balance Assessment",
-            description: "Testing and treatment for balance and dizziness issues."
-          },
-        ].map((service, index) => (
-          <div key={index} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition">
-            <h2 className="text-2xl font-semibold text-blue-600 mb-2">{service.title}</h2>
-            <p className="text-gray-600">{service.description}</p>
-          </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((service, index) => (
+          <Link href={`/services/${service.slug}`} key={index}>
+            <div className="bg-white rounded-xl shadow-md hover:shadow-lg p-6 transition duration-300 cursor-pointer">
+              <h2 className="text-2xl font-semibold text-blue-600">{service.title}</h2>
+              <p className="text-gray-700 mt-2">{service.short}</p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
