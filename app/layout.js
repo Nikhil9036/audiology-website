@@ -32,9 +32,12 @@ export default function RootLayout({ children }) {
             <nav className="space-x-4">
               <Link href="/" className="hover:underline">Home</Link>
               <Link href="/services" className="hover:underline">Services</Link>
-              <a href="contact" className="hover:underline">Contact</a>
+              <Link href="/contact" className="hover:underline">Contact</Link>
               <Link href="/appointment" className="hover:underline">Get Appointment</Link>
-              <a href="about" className="hover:underline">About Us</a>
+              <Link href="/about" className="hover:underline">About Us</Link>
+              <Link href="/audiologist/login" className="hover:underline text-yellow-200 font-semibold">
+                Audiologist Sign In / Sign Up
+              </Link>
             </nav>
           </div>
         </header>
