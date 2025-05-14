@@ -1,11 +1,15 @@
+'use client'; // Required for using useParams
+
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 const serviceData = {
   "hearing-tests": {
     title: "Hearing Tests",
     description: "Our hearing evaluations include pure-tone audiometry, tympanometry, speech testing, and otoacoustic emissions. These tests help us determine the exact type and degree of hearing loss.",
-    image: "/images/hearing-tests.jpg",  // Add image
-    video: "/videos/hearing-tests.mp4", // Add video if necessary
+    image: "/images/hearing-tests.jpg",
+    video: "/videos/hearing-tests.mp4",
   },
   "hearing-aids": {
     title: "Hearing Aids",
@@ -39,12 +43,14 @@ const serviceData = {
   },
 };
 
-export default function ServiceDetail({ params }) {
-  const service = serviceData[params.slug]; // Getting the service by slug
+export default function ServiceDetail() {
+  const params = useParams(); // ✅ Use the hook
+  const slug = params.slug;
+
+  const service = serviceData[slug];
 
   if (!service) {
-    // If no service data exists for the slug, show a 404
-    return notFound();
+    return notFound(); // Still works
   }
 
   return (
@@ -52,7 +58,6 @@ export default function ServiceDetail({ params }) {
       <h1 className="text-4xl font-bold text-blue-800 mb-6">{service.title}</h1>
       <p className="text-lg text-gray-700 mb-6">{service.description}</p>
 
-      {/* Check if there's an image or video to display */}
       {service.image && (
         <img
           src={service.image}
@@ -70,13 +75,12 @@ export default function ServiceDetail({ params }) {
         </div>
       )}
 
-      {/* Back Button */}
-      <a
+      <Link
         href="/services"
         className="inline-block mt-8 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
       >
         Back to Services
-      </a>
+      </Link>
     </div>
   );
 }
