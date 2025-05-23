@@ -1,8 +1,11 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+// Dynamically load EarScene (which contains Canvas and EarModel) with SSR disabled
+const EarScene = dynamic(() => import('./component/EarScene'), { ssr: false });
 
 export default function Home() {
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -32,10 +35,7 @@ export default function Home() {
   return (
     <div className="text-black">
       {/* HERO SECTION */}
-      <div
-          className="min-h-screen bg-fixed bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center"
-          style={{ backgroundImage: "url('/logo.jpeg')" }}
-      >
+      <div className="min-h-screen bg-fixed bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center">
         <div className="text-center px-6 mb-12">
           <h1 className="text-4xl md:text-5xl font-bold drop-shadow-lg">
             Welcome to Heal Hearing
@@ -45,16 +45,10 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center gap-10 max-w-6xl px-4">
-          <div className="rounded-full border-4 border-white/40 animate-spin-slow">
-            <Image
-              src="/Ear.jpeg"
-              alt="Hear About Us"
-              width={500}
-              height={500}
-              className="rounded-full shadow-xl"
-              priority
-            />
+        <div className="flex flex-col md:flex-row items-center gap-10 max-w-6xl px-4 w-full">
+          {/* 3D Model Container replaced by EarScene */}
+          <div style={{ width: '100%', height: '500px' }}>
+            <EarScene />
           </div>
 
           {/* Hidden paragraph, still used for speech */}
@@ -89,22 +83,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <style jsx>{`
-        .animate-spin-slow {
-          animation: spin 10s linear infinite;
-          transform-style: preserve-3d;
-        }
-
-        @keyframes spin {
-          0% {
-            transform: rotateY(0deg);
-          }
-          100% {
-            transform: rotateY(360deg);
-          }
-        }
-      `}</style>
     </div>
   );
 }
