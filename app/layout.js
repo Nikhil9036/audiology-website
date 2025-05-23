@@ -16,34 +16,40 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
-        className="flex flex-col min-h-screen"
+        className="min-h-screen overflow-hidden"
         style={{
-          backgroundImage: 'url("/Image1.jpg")',
+          backgroundImage: 'url("/logo.jpeg")',
           backgroundSize: 'cover',
+          backgroundAttachment: 'fixed', // Makes background fixed
           backgroundPosition: 'center',
         }}
       >
-        <header className="bg-blue-600 bg-opacity-90 text-white p-4">
+        {/* Sticky Header */}
+        <header className="bg-blue-600 bg-opacity-90 text-black p-4 sticky top-0 z-50 shadow-md">
           <div className="flex justify-between items-center max-w-6xl mx-auto">
             <div className="flex items-center space-x-2">
               <Image src="/logo.jpeg" alt="Heal Hearing Logo" width={40} height={40} />
               <span className="text-2xl font-bold">Heal Hearing</span>
             </div>
-            <nav className="space-x-4">
+            <nav className="space-x-4 hidden md:block">
               <Link href="/" className="hover:underline">Home</Link>
               <Link href="/services" className="hover:underline">Services</Link>
               <Link href="/contact" className="hover:underline">Contact</Link>
               <Link href="/appointment" className="hover:underline">Get Appointment</Link>
               <Link href="/about" className="hover:underline">About Us</Link>
-              <Link href="/audiologist/login" className="hover:underline text-yellow-200 font-semibold">
+              <Link href="/audiologist/login" className="hover:underline text-black font-semibold">
                 Audiologist Sign In / Sign Up
               </Link>
             </nav>
           </div>
         </header>
 
-        <main className="flex-grow p-6 max-w-6xl mx-auto">{children}</main>
+        {/* Scrollable content container */}
+        <div className="h-[calc(100vh-128px)] overflow-y-auto">
+          <main className="p-6 max-w-6xl mx-auto">{children}</main>
+        </div>
 
+        {/* Footer */}
         <footer className="bg-gray-800 bg-opacity-90 text-white p-4 text-center">
           <p>&copy; 2025 Heal Hearing | All rights reserved.</p>
         </footer>
