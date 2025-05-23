@@ -36,7 +36,7 @@ export default function AboutPage() {
 
       <p className="text-lg text-gray-700 leading-relaxed mb-6 font-semibold">Join Us on Your Hearing Journey</p>
       <p className="text-lg text-gray-700 leading-relaxed">
-        At Heal Hearing, we're here to support you every step of the way. Explore our resources, services, and expertise to discover a more vibrant, connected life.
+        At Heal Hearing, we are here to support you every step of the way. Explore our resources, services, and expertise to discover a more vibrant, connected life.
       </p>
     </div>
   );
