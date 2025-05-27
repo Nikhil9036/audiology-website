@@ -1,10 +1,13 @@
-'use client'; // Add this only if you use React state/hooks here
+'use client';
 
 import './globals.css';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function RootLayout({ children }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <html lang="en">
       <body
@@ -16,10 +19,10 @@ export default function RootLayout({ children }) {
           backgroundAttachment: 'fixed',
         }}
       >
-        {/* Professional Header with solid white navbar */}
+        {/* Header */}
         <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-200">
           <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
-            {/* Logo */}
+            {/* Logo and Brand */}
             <div className="flex items-center space-x-3">
               <Image
                 src="/logo.jpeg"
@@ -33,30 +36,54 @@ export default function RootLayout({ children }) {
               </span>
             </div>
 
-            {/* Navigation */}
+            {/* Hamburger */}
+            <button
+              className="md:hidden text-gray-700 focus:outline-none"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle Menu"
+            >
+              {mobileMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              )}
+            </button>
+
+            {/* Desktop Nav */}
             <nav className="hidden md:flex space-x-6 text-sm font-medium text-gray-700">
-              <Link href="/" className="hover:text-blue-600 transition">
-                Home
-              </Link>
-              <Link href="/services" className="hover:text-blue-600 transition">
-                Services
-              </Link>
-              <Link href="/contact" className="hover:text-blue-600 transition">
-                Contact
-              </Link>
-              <Link href="/appointment" className="hover:text-blue-600 transition">
-                Appointment
-              </Link>
-              <Link href="/about" className="hover:text-blue-600 transition">
-                About Us
-              </Link>
+              <Link href="/" className="hover:text-blue-600">Home</Link>
+              <Link href="/services" className="hover:text-blue-600">Services</Link>
+              <Link href="/contact" className="hover:text-blue-600">Contact</Link>
+              <Link href="/appointment" className="hover:text-blue-600">Appointment</Link>
+              <Link href="/about" className="hover:text-blue-600">About Us</Link>
             </nav>
+          </div>
+
+          {/* Mobile Nav */}
+          <div
+            className={`md:hidden transition-all duration-300 ease-in-out transform ${
+              mobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 overflow-hidden'
+            } bg-white px-6 pb-4 shadow-md`}
+          >
+            <div className="flex flex-col space-y-3 text-sm font-medium text-gray-700">
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="hover:text-blue-600">Home</Link>
+              <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="hover:text-blue-600">Services</Link>
+              <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-blue-600">Contact</Link>
+              <Link href="/appointment" onClick={() => setMobileMenuOpen(false)} className="hover:text-blue-600">Appointment</Link>
+              <Link href="/about" onClick={() => setMobileMenuOpen(false)} className="hover:text-blue-600">About Us</Link>
+            </div>
           </div>
         </header>
 
         {/* Main Content */}
         <div className="flex flex-col h-[calc(100vh-80px)] overflow-y-auto">
-          <main className="flex-grow p-6 max-w-6xl mx-auto">{children}</main>
+          <main className="flex-grow p-6 max-w-6xl mx-auto">
+            {children}
+          </main>
 
           {/* Footer */}
           <footer className="bg-blue-900 text-white px-6 py-10 text-sm mt-auto">
@@ -75,58 +102,24 @@ export default function RootLayout({ children }) {
               <div>
                 <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
                 <ul className="space-y-2">
-                  <li>
-                    <Link href="/services" className="hover:underline">
-                      Our Services
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/about" className="hover:underline">
-                      About Us
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/contact" className="hover:underline">
-                      Contact
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/appointment" className="hover:underline">
-                      Book Appointment
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/audiologist/login" className="hover:underline">
-                      Audiologist Portal
-                    </Link>
-                  </li>
+                  <li><Link href="/services" className="hover:underline">Our Services</Link></li>
+                  <li><Link href="/about" className="hover:underline">About Us</Link></li>
+                  <li><Link href="/contact" className="hover:underline">Contact</Link></li>
+                  <li><Link href="/appointment" className="hover:underline">Book Appointment</Link></li>
+                  <li><Link href="/audiologist/login" className="hover:underline">Audiologist Portal</Link></li>
                 </ul>
               </div>
 
-              {/* Legal & Connect */}
+              {/* Legal & Social */}
               <div>
                 <h3 className="text-lg font-semibold mb-3">Legal & Connect</h3>
                 <ul className="space-y-2">
-                  <li>
-                    <Link href="/privacy-policy" className="hover:underline">
-                      Privacy Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/terms-of-service" className="hover:underline">
-                      Terms of Service
-                    </Link>
-                  </li>
+                  <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
+                  <li><Link href="/terms-of-service" className="hover:underline">Terms of Service</Link></li>
                   <li className="flex space-x-4 mt-3">
-                    <a href="#" aria-label="Facebook" className="hover:text-blue-400">
-                      Facebook
-                    </a>
-                    <a href="#" aria-label="Instagram" className="hover:text-pink-400">
-                      Instagram
-                    </a>
-                    <a href="#" aria-label="LinkedIn" className="hover:text-blue-300">
-                      LinkedIn
-                    </a>
+                    <a href="#" className="hover:text-blue-400">Facebook</a>
+                    <a href="#" className="hover:text-pink-400">Instagram</a>
+                    <a href="#" className="hover:text-blue-300">LinkedIn</a>
                   </li>
                 </ul>
               </div>
