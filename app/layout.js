@@ -8,6 +8,15 @@ import { useState } from 'react';
 export default function RootLayout({ children }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Helper component for mobile menu links that closes menu on click
+  function MobileNavLink({ href, children }) {
+    return (
+      <Link href={href} className="block hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
+        {children}
+      </Link>
+    );
+  }
+
   return (
     <html lang="en">
       <body
@@ -27,7 +36,7 @@ export default function RootLayout({ children }) {
               <Image
                 src="/logo.jpeg"
                 alt="Heal Hearing Logo"
-                width={40}  // Slightly smaller on mobile
+                width={40}
                 height={40}
                 className="rounded-full"
                 priority
@@ -39,19 +48,19 @@ export default function RootLayout({ children }) {
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex space-x-6 text-sm font-medium text-gray-700">
-              <Link href="/" className="hover:text-blue-600 transition">
+              <Link href="/" className="hover:text-blue-600">
                 Home
               </Link>
-              <Link href="/services" className="hover:text-blue-600 transition">
+              <Link href="/services" className="hover:text-blue-600">
                 Services
               </Link>
-              <Link href="/contact" className="hover:text-blue-600 transition">
+              <Link href="/contact" className="hover:text-blue-600">
                 Contact
               </Link>
-              <Link href="/appointment" className="hover:text-blue-600 transition">
+              <Link href="/appointment" className="hover:text-blue-600">
                 Appointment
               </Link>
-              <Link href="/about" className="hover:text-blue-600 transition">
+              <Link href="/about" className="hover:text-blue-600">
                 About Us
               </Link>
             </nav>
@@ -91,21 +100,11 @@ export default function RootLayout({ children }) {
           {/* Mobile Nav */}
           {isMenuOpen && (
             <div className="md:hidden px-4 pb-4 space-y-2 text-base font-medium text-gray-700 bg-white shadow">
-              <Link href="/" className="block hover:text-blue-600">
-                Home
-              </Link>
-              <Link href="/services" className="block hover:text-blue-600">
-                Services
-              </Link>
-              <Link href="/contact" className="block hover:text-blue-600">
-                Contact
-              </Link>
-              <Link href="/appointment" className="block hover:text-blue-600">
-                Appointment
-              </Link>
-              <Link href="/about" className="block hover:text-blue-600">
-                About Us
-              </Link>
+              <MobileNavLink href="/">Home</MobileNavLink>
+              <MobileNavLink href="/services">Services</MobileNavLink>
+              <MobileNavLink href="/contact">Contact</MobileNavLink>
+              <MobileNavLink href="/appointment">Appointment</MobileNavLink>
+              <MobileNavLink href="/about">About Us</MobileNavLink>
             </div>
           )}
         </header>
@@ -115,7 +114,7 @@ export default function RootLayout({ children }) {
           <main
             className="flex-grow px-4 py-6 max-w-6xl mx-auto w-full"
             style={{
-              wordBreak: 'break-word', // Prevent overflow by breaking long words
+              wordBreak: 'break-word',
             }}
           >
             {children}
