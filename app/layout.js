@@ -16,8 +16,7 @@ export default function RootLayout({ children }) {
           backgroundImage: 'url("/logo.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          // Disable fixed on mobile for smoother scroll:
-          backgroundAttachment: window.innerWidth >= 768 ? 'fixed' : 'scroll',
+          backgroundAttachment: 'fixed',
         }}
       >
         {/* Header */}
@@ -28,11 +27,12 @@ export default function RootLayout({ children }) {
               <Image
                 src="/logo.jpeg"
                 alt="Heal Hearing Logo"
-                width={50}
-                height={50}
+                width={40}  // Slightly smaller on mobile
+                height={40}
                 className="rounded-full"
+                priority
               />
-              <span className="text-2xl font-semibold tracking-wide text-blue-700">
+              <span className="text-xl sm:text-2xl font-semibold tracking-wide text-blue-700 whitespace-nowrap">
                 Heal Hearing
               </span>
             </div>
@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
 
             {/* Hamburger Icon */}
             <button
-              className="md:hidden flex items-center justify-center text-gray-700"
+              className="md:hidden flex items-center justify-center text-gray-700 focus:outline-none"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -90,20 +90,20 @@ export default function RootLayout({ children }) {
 
           {/* Mobile Nav */}
           {isMenuOpen && (
-            <div className="md:hidden px-4 py-4 space-y-2 text-sm font-medium text-gray-700 bg-white shadow">
-              <Link href="/" className="block hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
+            <div className="md:hidden px-4 pb-4 space-y-2 text-base font-medium text-gray-700 bg-white shadow">
+              <Link href="/" className="block hover:text-blue-600">
                 Home
               </Link>
-              <Link href="/services" className="block hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/services" className="block hover:text-blue-600">
                 Services
               </Link>
-              <Link href="/contact" className="block hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/contact" className="block hover:text-blue-600">
                 Contact
               </Link>
-              <Link href="/appointment" className="block hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/appointment" className="block hover:text-blue-600">
                 Appointment
               </Link>
-              <Link href="/about" className="block hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/about" className="block hover:text-blue-600">
                 About Us
               </Link>
             </div>
@@ -112,12 +112,17 @@ export default function RootLayout({ children }) {
 
         {/* Main Content */}
         <div className="flex flex-col min-h-screen">
-          <main className="flex-grow px-4 sm:px-6 md:px-0 max-w-full md:max-w-6xl mx-auto pt-6">
+          <main
+            className="flex-grow px-4 py-6 max-w-6xl mx-auto w-full"
+            style={{
+              wordBreak: 'break-word', // Prevent overflow by breaking long words
+            }}
+          >
             {children}
           </main>
 
           {/* Footer */}
-          <footer className="bg-blue-900 text-white px-4 sm:px-6 md:px-6 py-10 text-sm">
+          <footer className="bg-blue-900 text-white px-4 py-10 text-sm sm:text-base">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
@@ -187,7 +192,7 @@ export default function RootLayout({ children }) {
               </div>
             </div>
 
-            <div className="text-center mt-6 border-t border-blue-700 pt-4 text-gray-300 text-xs">
+            <div className="text-center mt-6 border-t border-blue-700 pt-4 text-gray-300 text-xs sm:text-sm">
               <p>&copy; {new Date().getFullYear()} Heal Hearing. All rights reserved.</p>
               <p>Designed with ❤️ in India</p>
             </div>
