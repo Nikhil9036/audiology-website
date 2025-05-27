@@ -16,12 +16,13 @@ export default function RootLayout({ children }) {
           backgroundImage: 'url("/logo.jpeg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundAttachment: 'fixed',
+          // Disable fixed on mobile for smoother scroll:
+          backgroundAttachment: window.innerWidth >= 768 ? 'fixed' : 'scroll',
         }}
       >
         {/* Header */}
         <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-200">
-          <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-6 py-3 flex justify-between items-center">
             {/* Logo */}
             <div className="flex items-center space-x-3">
               <Image
@@ -89,20 +90,20 @@ export default function RootLayout({ children }) {
 
           {/* Mobile Nav */}
           {isMenuOpen && (
-            <div className="md:hidden px-6 pb-4 space-y-2 text-sm font-medium text-gray-700 bg-white shadow">
-              <Link href="/" className="block hover:text-blue-600">
+            <div className="md:hidden px-4 py-4 space-y-2 text-sm font-medium text-gray-700 bg-white shadow">
+              <Link href="/" className="block hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
                 Home
               </Link>
-              <Link href="/services" className="block hover:text-blue-600">
+              <Link href="/services" className="block hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
                 Services
               </Link>
-              <Link href="/contact" className="block hover:text-blue-600">
+              <Link href="/contact" className="block hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
                 Contact
               </Link>
-              <Link href="/appointment" className="block hover:text-blue-600">
+              <Link href="/appointment" className="block hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
                 Appointment
               </Link>
-              <Link href="/about" className="block hover:text-blue-600">
+              <Link href="/about" className="block hover:text-blue-600" onClick={() => setIsMenuOpen(false)}>
                 About Us
               </Link>
             </div>
@@ -111,10 +112,12 @@ export default function RootLayout({ children }) {
 
         {/* Main Content */}
         <div className="flex flex-col min-h-screen">
-          <main className="flex-grow p-6 max-w-6xl mx-auto">{children}</main>
+          <main className="flex-grow px-4 sm:px-6 md:px-0 max-w-full md:max-w-6xl mx-auto pt-6">
+            {children}
+          </main>
 
           {/* Footer */}
-          <footer className="bg-blue-900 text-white px-6 py-10 text-sm">
+          <footer className="bg-blue-900 text-white px-4 sm:px-6 md:px-6 py-10 text-sm">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
               <div>
                 <h3 className="text-lg font-semibold mb-3">Contact Us</h3>
