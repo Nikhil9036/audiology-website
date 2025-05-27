@@ -1,20 +1,12 @@
+'use client'; // Add this only if you use React state/hooks here
+
 import './globals.css';
 import Link from 'next/link';
 import Image from 'next/image';
 
-export const metadata = {
-  title: 'Heal Hearing',
-  description: 'Professional hearing care services',
-};
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <title>{metadata.title}</title>
-        <meta name="description" content={metadata.description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </head>
       <body
         className="h-screen overflow-hidden font-sans text-gray-800"
         style={{
@@ -29,17 +21,35 @@ export default function RootLayout({ children }) {
           <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <Image src="/logo.jpeg" alt="Heal Hearing Logo" width={50} height={50} className="rounded-full" />
-              <span className="text-2xl font-semibold tracking-wide text-blue-700">Heal Hearing</span>
+              <Image
+                src="/logo.jpeg"
+                alt="Heal Hearing Logo"
+                width={50}
+                height={50}
+                className="rounded-full"
+              />
+              <span className="text-2xl font-semibold tracking-wide text-blue-700">
+                Heal Hearing
+              </span>
             </div>
 
             {/* Navigation */}
             <nav className="hidden md:flex space-x-6 text-sm font-medium text-gray-700">
-              <Link href="/" className="hover:text-blue-600 transition">Home</Link>
-              <Link href="/services" className="hover:text-blue-600 transition">Services</Link>
-              <Link href="/contact" className="hover:text-blue-600 transition">Contact</Link>
-              <Link href="/appointment" className="hover:text-blue-600 transition">Appointment</Link>
-              <Link href="/about" className="hover:text-blue-600 transition">About Us</Link>
+              <Link href="/" className="hover:text-blue-600 transition">
+                Home
+              </Link>
+              <Link href="/services" className="hover:text-blue-600 transition">
+                Services
+              </Link>
+              <Link href="/contact" className="hover:text-blue-600 transition">
+                Contact
+              </Link>
+              <Link href="/appointment" className="hover:text-blue-600 transition">
+                Appointment
+              </Link>
+              <Link href="/about" className="hover:text-blue-600 transition">
+                About Us
+              </Link>
             </nav>
           </div>
         </header>
@@ -65,11 +75,31 @@ export default function RootLayout({ children }) {
               <div>
                 <h3 className="text-lg font-semibold mb-3">Quick Links</h3>
                 <ul className="space-y-2">
-                  <li><Link href="/services" className="hover:underline">Our Services</Link></li>
-                  <li><Link href="/about" className="hover:underline">About Us</Link></li>
-                  <li><Link href="/contact" className="hover:underline">Contact</Link></li>
-                  <li><Link href="/appointment" className="hover:underline">Book Appointment</Link></li>
-                  <li><Link href="/audiologist/login" className="hover:underline">Audiologist Portal</Link></li>
+                  <li>
+                    <Link href="/services" className="hover:underline">
+                      Our Services
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/about" className="hover:underline">
+                      About Us
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/contact" className="hover:underline">
+                      Contact
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/appointment" className="hover:underline">
+                      Book Appointment
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/audiologist/login" className="hover:underline">
+                      Audiologist Portal
+                    </Link>
+                  </li>
                 </ul>
               </div>
 
@@ -77,12 +107,26 @@ export default function RootLayout({ children }) {
               <div>
                 <h3 className="text-lg font-semibold mb-3">Legal & Connect</h3>
                 <ul className="space-y-2">
-                  <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
-                  <li><Link href="/terms-of-service" className="hover:underline">Terms of Service</Link></li>
+                  <li>
+                    <Link href="/privacy-policy" className="hover:underline">
+                      Privacy Policy
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/terms-of-service" className="hover:underline">
+                      Terms of Service
+                    </Link>
+                  </li>
                   <li className="flex space-x-4 mt-3">
-                    <a href="#" aria-label="Facebook" className="hover:text-blue-400">Facebook</a>
-                    <a href="#" aria-label="Instagram" className="hover:text-pink-400">Instagram</a>
-                    <a href="#" aria-label="LinkedIn" className="hover:text-blue-300">LinkedIn</a>
+                    <a href="#" aria-label="Facebook" className="hover:text-blue-400">
+                      Facebook
+                    </a>
+                    <a href="#" aria-label="Instagram" className="hover:text-pink-400">
+                      Instagram
+                    </a>
+                    <a href="#" aria-label="LinkedIn" className="hover:text-blue-300">
+                      LinkedIn
+                    </a>
                   </li>
                 </ul>
               </div>
