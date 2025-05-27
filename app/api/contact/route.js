@@ -1,6 +1,6 @@
+import { db } from '../../lib/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 import { NextResponse } from 'next/server';
-import { writeFile, readFile } from 'fs/promises';
-import path from 'path';
 
 export async function POST(request) {
   try {
@@ -14,24 +14,11 @@ export async function POST(request) {
       date: new Date().toISOString(),
     };
 
-    const filePath = path.join(process.cwd(), 'messages.json');
-
-    let existing = [];
-
-    try {
-      const fileData = await readFile(filePath, 'utf-8');
-      existing = JSON.parse(fileData);
-    } catch (err) {
-      // File might not exist yet — ignore
-    }
-
-    existing.push(newEntry);
-
-    await writeFile(filePath, JSON.stringify(existing, null, 2));
+    await addDoc(collection(db, 'contacts'), newEntry);
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Error saving message:', error);
+    console.error('Error saving contact message:', error);
     return NextResponse.json({ error: 'Failed to save message' }, { status: 500 });
   }
 }

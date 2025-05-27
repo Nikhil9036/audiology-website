@@ -37,9 +37,7 @@ export default function RootLayout({ children }) {
               <Link href="/contact" className="hover:underline">Contact</Link>
               <Link href="/appointment" className="hover:underline">Get Appointment</Link>
               <Link href="/about" className="hover:underline">About Us</Link>
-              <Link href="/audiologist/login" className="hover:underline text-black font-semibold">
-                Audiologist Sign In / Sign Up
-              </Link>
+              
             </nav>
           </div>
         </header>
@@ -79,9 +77,9 @@ export default function RootLayout({ children }) {
                   <li><Link href="/privacy-policy" className="hover:underline">Privacy Policy</Link></li>
                   <li><Link href="/terms-of-service" className="hover:underline">Terms of Service</Link></li>
                   <li className="flex space-x-3 mt-2">
-                    <a href="#" aria-label="Facebook" className="hover:text-blue-400">Fb</a>
-                    <a href="#" aria-label="Instagram" className="hover:text-pink-400">Ig</a>
-                    <a href="#" aria-label="LinkedIn" className="hover:text-blue-300">In</a>
+                    <a href="#" aria-label="Facebook" className="hover:text-blue-400">Facebook</a>
+                    <a href="#" aria-label="Instagram" className="hover:text-pink-400">Instagram</a>
+                    <a href="#" aria-label="LinkedIn" className="hover:text-blue-300">LinkedIn</a>
                   </li>
                 </ul>
               </div>

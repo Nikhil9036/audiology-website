@@ -29,8 +29,7 @@ export default function AppointmentPage() {
 
   return (
     <div className="min-h-screen bg-cover p-6 flex flex-col items-center justify-center gap-8 text-black">
-      {/* Appointment Info */}
-      <div className="bg-white/10 backdrop-blur-md p-10 rounded shadow-md w-full sm:w-21/20 md:w-20/19 lg:w-22/21 xl:w-20/19 max-w-10xl">
+      <div className="bg-white/10 backdrop-blur-md p-10 rounded shadow-md w-full max-w-3xl">
         <h2 className="text-2xl font-semibold mb-4 text-center">Book an Appointment</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">

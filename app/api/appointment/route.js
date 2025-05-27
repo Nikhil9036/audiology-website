@@ -1,32 +1,15 @@
-import { Resend } from 'resend';
+// app/api/appointment/route.js
+import { NextResponse } from 'next/server';
+import { collection, addDoc } from 'firebase/firestore';
+import { db } from '../../lib/firebase';
 
-// WARNING: This is for testing only. Do NOT hardcode in production.
-const resend = new Resend('re_5nHcraNb_J5vwa9rykTK9hCi4yc61gbop');
-
-export async function POST(req) {
+export async function POST(request) {
   try {
-    const { name, email, number, date, time } = await req.json();
-
-    // Send confirmation email
-    const response = await resend.emails.send({
-      from: 'Your Clinic <onboarding@resend.dev>',
-      to: email,
-      subject: 'Appointment Confirmation',
-      html: `
-        <h2>Appointment Confirmed</h2>
-        <p>Hi ${name},</p>
-        <p>Your appointment is confirmed for:</p>
-        <ul>
-          <li><strong>Date:</strong> ${date}</li>
-          <li><strong>Time:</strong> ${time}</li>
-        </ul>
-        <p>Thank you for choosing our clinic.</p>
-      `,
-    });
-
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
+    const data = await request.json();
+    await addDoc(collection(db, 'appointments'), data);
+    return NextResponse.json({ message: 'Appointment booked successfully' }, { status: 201 });
   } catch (error) {
-    console.error(error);
-    return new Response(JSON.stringify({ error: 'Email send failed' }), { status: 500 });
+    console.error('Error saving appointment:', error);
+    return NextResponse.json({ error: 'Failed to book appointment' }, { status: 500 });
   }
 }
