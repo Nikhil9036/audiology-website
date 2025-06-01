@@ -1,6 +1,6 @@
 export default function AboutPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
+    <div className="max-w-4xl mx-auto bg-white px-4 py-12">
       <h1 className="text-4xl font-bold text-center text-blue-700 mb-8">About Us</h1>
       
       <p className="text-lg text-gray-700 leading-relaxed mb-6 font-semibold">Welcome to Heal Hearing</p>
@@ -9,18 +9,18 @@ export default function AboutPage() {
         Our mission is to provide exceptional service, expert knowledge, and innovative solutions to support your hearing well-being.
       </p>
 
-      <p className="text-lg text-gray-700 leading-relaxed mb-6 font-semibold">Who We Are</p>
+      <p className="text-lg text-gray-700 leading-relaxed mb-6 font-semibold">Who We Are?</p>
       <p className="text-lg text-gray-700 leading-relaxed mb-6">
         We are a team of passionate professionals committed to delivering personalized care and guidance. Our expertise ensures you receive the best possible support for a suitable hearing lifestyle. With Heal Hearing, you can trust that you are in good hands.
       </p>
 
-      <p className="text-lg text-gray-700 leading-relaxed mb-6 font-semibold">What We Do</p>
+      <p className="text-lg text-gray-700 leading-relaxed mb-6 font-semibold">What We Do?</p>
       <p className="text-lg text-gray-700 leading-relaxed mb-6">
         We strive to build lasting relationships with our clients, founded on trust, integrity, and a deep understanding of their unique needs.
         Our goal is to provide reliable, trustworthy, and effective solutions that enhance your hearing experience.
       </p>
 
-      <p className="text-lg text-gray-700 leading-relaxed mb-6 font-semibold">Our Values and Goals</p>
+      <p className="text-lg text-gray-700 leading-relaxed mb-6 font-semibold">Our Values and Goals?</p>
       <ul className="list-disc list-inside text-lg text-gray-700 leading-relaxed mb-6">
         <li><strong>Compassionate Care:</strong> We prioritize empathy and understanding in every interaction.</li>
         <li><strong>Expert Knowledge:</strong> Our team stays up-to-date with the latest advancements in hearing health.</li>

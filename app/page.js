@@ -47,7 +47,7 @@ export default function Home() {
 
         <div className="flex flex-col md:flex-row items-center gap-10 max-w-6xl px-4 w-full">
           {/* 3D Model Container replaced by EarScene */}
-          <div style={{ width: '100%', height: '500px' }}>
+          <div className="touch-pan-y pointer-events-none" style={{ width: '100%', height: '500px' }}>
             <EarScene />
           </div>
 

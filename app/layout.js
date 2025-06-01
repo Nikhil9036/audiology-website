@@ -88,7 +88,7 @@ export default function RootLayout({ children }) {
 
           {/* Main Content */}
           <div className="flex flex-col min-h-screen">
-            <main className="flex-grow px-4 py-6 max-w-6xl mx-auto w-full" style={{ wordBreak: 'break-word' }}>
+            <main className="flex-grow px-4 py-6 max-w-6xl mx-auto w-full md:px-6 lg:px-8" style={{ wordBreak: 'break-word' }}>
               {children}
             </main>
 
