@@ -11,6 +11,7 @@ export default function ContactsAdminPage() {
   const router = useRouter();
   const [contacts, setContacts] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!loading && (!user || !isAudiologist)) {
@@ -20,11 +21,16 @@ export default function ContactsAdminPage() {
 
   useEffect(() => {
     const fetchContacts = async () => {
-      const contactsRef = collection(db, 'contacts');
-      const q = query(contactsRef, orderBy('createdAt', 'desc'));
-      const querySnapshot = await getDocs(q);
-      const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-      setContacts(data);
+      try {
+        const contactsRef = collection(db, 'contacts');
+        const q = query(contactsRef, orderBy('createdAt', 'desc'));
+        const querySnapshot = await getDocs(q);
+        const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setContacts(data);
+      } catch (error) {
+        setError('Error fetching contacts');
+        console.error(error);
+      }
     };
 
     if (user && isAudiologist) {
@@ -33,12 +39,18 @@ export default function ContactsAdminPage() {
   }, [user, isAudiologist]);
 
   const handleDelete = async (id) => {
-    await deleteDoc(doc(db, 'contacts', id));
-    setContacts(contacts.filter(item => item.id !== id));
+    try {
+      await deleteDoc(doc(db, 'contacts', id));
+      setContacts(contacts.filter(item => item.id !== id));
+    } catch (error) {
+      setError('Error deleting contact');
+      console.error(error);
+    }
   };
 
   if (loading) return <p>Loading...</p>;
   if (!user || !isAudiologist) return null;
+  if (error) return <p>{error}</p>;
 
   return (
     <div className="p-6">

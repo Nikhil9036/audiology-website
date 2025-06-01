@@ -17,10 +17,13 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body
         className="min-h-screen overflow-x-hidden font-sans text-gray-800"
         style={{
-          backgroundImage: 'url("/logo.jpeg")',
+          backgroundImage: 'url("/logo4.jpg")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed',
@@ -37,6 +40,7 @@ export default function RootLayout({ children }) {
                   alt="Heal Hearing Logo"
                   width={40}
                   height={40}
+                  layout="fixed"
                   className="rounded-full"
                   priority
                 />
@@ -46,7 +50,7 @@ export default function RootLayout({ children }) {
               </div>
 
               {/* Desktop Nav */}
-              <nav className="hidden md:flex space-x-6 text-sm font-medium text-gray-700">
+              <nav className="hidden lg:flex space-x-6 text-sm font-medium text-gray-700">
                 <Link href="/" className="hover:text-blue-600">Home</Link>
                 <Link href="/services" className="hover:text-blue-600">Services</Link>
                 <Link href="/contact" className="hover:text-blue-600">Contact</Link>
@@ -56,7 +60,7 @@ export default function RootLayout({ children }) {
 
               {/* Hamburger Icon */}
               <button
-                className="md:hidden flex items-center justify-center text-gray-700 focus:outline-none"
+                className="lg:hidden flex items-center justify-center text-gray-700 focus:outline-none"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
               >
@@ -72,7 +76,7 @@ export default function RootLayout({ children }) {
 
             {/* Mobile Nav */}
             {isMenuOpen && (
-              <div className="md:hidden px-4 pb-4 space-y-2 text-base font-medium text-gray-700 bg-white shadow">
+              <div className="lg:hidden px-4 pb-4 space-y-2 text-base font-medium text-gray-700 bg-white shadow">
                 <MobileNavLink href="/">Home</MobileNavLink>
                 <MobileNavLink href="/services">Services</MobileNavLink>
                 <MobileNavLink href="/contact">Contact</MobileNavLink>
