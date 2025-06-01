@@ -23,7 +23,7 @@ export default function ContactsAdminPage() {
     const fetchContacts = async () => {
       try {
         const contactsRef = collection(db, 'contacts');
-        const q = query(contactsRef, orderBy('createdAt', 'desc'));
+        const q = query(contactsRef, orderBy('date', 'desc'));
         const querySnapshot = await getDocs(q);
         const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         console.log('Fetched data:', data);
