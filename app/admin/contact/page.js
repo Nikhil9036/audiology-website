@@ -26,6 +26,7 @@ export default function ContactsAdminPage() {
         const q = query(contactsRef, orderBy('createdAt', 'desc'));
         const querySnapshot = await getDocs(q);
         const data = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        console.log('Fetched data:', data);
         setContacts(data);
       } catch (error) {
         setError('Error fetching contacts');
@@ -86,30 +87,34 @@ export default function ContactsAdminPage() {
           </button>
         </div>
       </div>
-      <ul className="space-y-4">
-        {(searchTerm ? contacts.filter((item) => {
-          const search = searchTerm.toLowerCase().trim();
-          return (
-            item.name?.toLowerCase().includes(search) ||
-            item.number?.includes(search) ||
-            item.email?.toLowerCase().includes(search) ||
-            item.message?.toLowerCase().includes(search)
-          );
-        }) : contacts).map((item) => (
-          <li key={item.id} className="border p-4 rounded text-black bg-white shadow">
-            <p><strong>Name:</strong> {item.name}</p>
-            <p><strong>Number:</strong> {item.number}</p>
-            <p><strong>Email:</strong> {item.email}</p>
-            <p><strong>Message:</strong> {item.message}</p>
-            <button
-              className="mt-2 text-red-600 underline"
-              onClick={() => handleDelete(item.id)}
-            >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      {contacts.length === 0 ? (
+        <p>No contacts found.</p>
+      ) : (
+        <ul className="space-y-4">
+          {(searchTerm ? contacts.filter((item) => {
+            const search = searchTerm.toLowerCase().trim();
+            return (
+              item.name?.toLowerCase().includes(search) ||
+              item.number?.includes(search) ||
+              item.email?.toLowerCase().includes(search) ||
+              item.message?.toLowerCase().includes(search)
+            );
+          }) : contacts).map((item) => (
+            <li key={item.id} className="border p-4 rounded text-black bg-white shadow">
+              <p><strong>Name:</strong> {item.name}</p>
+              <p><strong>Number:</strong> {item.number}</p>
+              <p><strong>Email:</strong> {item.email}</p>
+              <p><strong>Message:</strong> {item.message}</p>
+              <button
+                className="mt-2 text-red-600 underline"
+                onClick={() => handleDelete(item.id)}
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
