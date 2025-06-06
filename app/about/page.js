@@ -16,8 +16,8 @@ export default function AboutPage() {
 
       <p className="text-lg text-gray-700 leading-relaxed mb-6 font-semibold">What We Do?</p>
       <p className="text-lg text-gray-700 leading-relaxed mb-6">
-        We strive to build lasting relationships with our clients, founded on trust, integrity, and a deep understanding of their unique needs.
-        Our goal is to provide reliable, trustworthy, and effective solutions that enhance your hearing experience.
+        nceWe strive to build lasting relationships with our clients, founded on trust, integrity, and a deep understanding of their unique needs.
+        Our goal is to provide reliable, trustworthy, and effective solutions that enhance your hearing experie.
       </p>
 
       <p className="text-lg text-gray-700 leading-relaxed mb-6 font-semibold">Our Values and Goals?</p>
